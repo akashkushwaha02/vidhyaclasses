@@ -148,7 +148,7 @@
               <th colspan="2"><h2>Search your flight</h2></th>              
             </tr>
             <tr>
-              <th rowspan="2">
+              <th rowspan="5">
                 <div class="container">
         <div class="buttons">
             <div class="tab-buttons">
@@ -190,7 +190,7 @@
 						<option value="4">4</option>
 						</select><br ><br>
 
-						<button type=submit>Search</button>
+						<button type="button" onclick='search()' >Search</button>
                     </form>
             </div>
             
@@ -203,7 +203,7 @@
 					
                 </div>
             </th>  
-              <td style="height:20px;"> 
+              <td style="height:20px;width:50%;"> 
                   <div style="align-self: right;">
                              <h3>Pune> delhi </h3>
             
@@ -214,9 +214,24 @@
 							<td>
 								<span>Rs. 9500 </span>
 								
-									<img src='./image/plane.gif'  height="60px" width="60px"/>
+								
+									<img src='./image/plane.gif'  height="60px" width="60px" /><br>
+									<button type="button" onclick='redirect_page()' >Book Now</Button>
 								
 							</td>
+							
+							
+						</tr>
+						<tr>						
+							<td>
+								<span>Rs. 9500 </span>
+								
+								
+									<img src='./image/plane.gif'  height="60px" width="60px"/><br>
+									<button type="button" onclick='redirect_page()' >Book Now</Button>
+								
+							</td>
+							
 							
 						</tr>
                   </div>  
@@ -225,8 +240,15 @@
           </table>               
        </div>
 	   
-	   <script>	   			
-		
+	   <script>	   		
+				function redirect_page(){
+					location.href = './next.html'
+				}
+				
+				function search(data){
+					console.log(data)
+				}
+				
 				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function(){
 					if(this.readyState == 4 && this.status == 200){
