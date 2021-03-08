@@ -1,10 +1,144 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
     <head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home page</title>
         <style>
             table, th, td {
               border: 1px solid black;
             }
+			
+			
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				background-color: rgb(236, 249, 255);
+				font-family: "Lato", sans-serif;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				min-height: 100vh;
+			}
+
+			h3 {
+				margin-bottom: 5rem;
+				text-transform: uppercase;
+			}
+
+			.range-container {
+				position: relative;
+			}
+
+			input[type="range"] {
+				width: 400px;
+				margin: 18px 0;
+				-webkit-appearance: none;
+			}
+
+			input[type="range"]:focus {
+				outline: none;
+			}
+
+			
+
+			/*chrome  */
+			input[type="range"]::-webkit-slider-runnable-track {
+				background: red;
+				border-radius: 4px;
+				width: 100%;
+				height: 10px;
+				cursor: pointer;
+			}
+
+			input[type="range"]::-webkit-slider-thumb {
+				-webkit-appearance: none;
+				height: 24px;
+				width: 24px;
+				border-radius: 50%;
+				background-color: white;
+				margin-top: -8px;
+				border: 1px solid red;
+				cursor: pointer;
+			}
+
+			/*firefox */
+			input[type="range"]::-moz-range-track {
+				background: red;
+				border-radius: 4px;
+				width: 100%;
+				height: 10px;
+				cursor: pointer;
+			}
+
+			input[type="range"]::-moz-range-thumb {
+				-moz-appearance: none;
+				height: 24px;
+				width: 24px;
+				border-radius: 50%;
+				background-color: white;
+				margin-top: -8px;
+				border: 1px solid red;
+				cursor: pointer;
+			}
+			
+						
+			.buttons {
+				border-bottom: 1px solid slategrey;
+				z-index: -1;
+			}
+
+			.tab-buttons {
+				width: 60%;
+				display: flex;
+				color: slategrey;
+			}
+
+			.btn {
+				border: none;
+				padding: 16px;
+				width: 100%;
+				margin: 4px 0;
+				font-size: 1rem;
+				background-color: transparent;
+			}
+
+			.btn:hover {
+				color: rgb(197, 0, 0);
+			}
+
+			.btn.active {
+				color: rgb(197, 0, 0);
+				border-bottom: 3px solid rgb(197, 0, 0);
+				margin-bottom: -2px;
+			}
+
+			.tab-contents {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				margin-top: 32px;
+			}
+
+			.tab-contents h2 {
+				margin-bottom: 16px;
+			}
+
+			.tab-content {
+				display: none;
+			}
+
+			.tab-content.active {
+				display: block;
+			}
+			
+			
+
         </style>
 
     </head>
@@ -15,52 +149,134 @@
             </tr>
             <tr>
               <th rowspan="2">
-                <div>
-                    <form >
-                    <input type="text" name="starting city" placeholder="From"><br><br>
-                    <input type="text" name="destination "  placeholder="to"><br><br>
-                    <label for="Jpurney date">Journay date</label><br><input type="date" name="journay_date"><br><br>
-                    <label for="Return date">return date</label><br><input type="date" name="retunrn_date"><br><br>                                                           
-                    <select name="No of passengers" >
-                    <option value="#" readonly selected>No of passengers</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    </select><br ><br>
+                <div class="container">
+        <div class="buttons">
+            <div class="tab-buttons">
+                <button class="btn active" type="button" data-target="#One">One-Way</button>
+                <button class="btn " type="button" data-target="#Return">Return</button>
+                
+            </div>
+        </div>
+        <div class="tab-contents">
+            <div class="tab-content active" id="One">
+                <h2>One Way</h2>
+					<form >
+						<input type="text" name="starting city" placeholder="From" required><br><br>
+						<input type="text" name="destination "  placeholder="to" required><br><br>
+						<label for="Jpurney date" required>Journay date</label><br><input type="date" name="journay_date"><br><br>						                                                       
+						<select name="No of passengers" >
+						<option value="#" readonly selected>No of passengers</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						</select><br ><br>
 
-                    <button type=submit>Search</button>
+						<button type=submit id  >Search</button>
                     </form>
-                </div>
+            </div>
+            <div class="tab-content " id="Return">
+                <h2>Return</h2>
+					<form >
+						<input type="text" name="starting city" placeholder="From" required><br><br>
+						<input type="text" name="destination "  placeholder="to" required><br><br>
+						<label for="Jpurney date" required>Journay date</label><br><input type="date" name="journay_date"><br><br>
+						<label for="Return date" required>return date</label><br><input type="date" name="retunrn_date"><br><br>                                                           
+						<select name="No of passengers" >
+						<option value="#" readonly selected>No of passengers</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						</select><br ><br>
+
+						<button type=submit>Search</button>
+                    </form>
+            </div>
+            
+        </div>
+			</div>
                 <div class="slidecontainer" >
-                    <span>Refined flight search<br ></span>
-                    
-                    <div style="text-align:left;padding-left: 12;">Rs.0</div><div style="text-align:right;margin-top: -15;">Rs.10000</div>
-                    <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                    <span>Refined flight search<br ></span>                    
+                    <input type="range" min="1" max="10000" value="5000" class="slider" id="myRange">
+					<label for="range">5000</label>
+					
                 </div>
             </th>  
-              <td colspan="2"> 
-                  <div style="position: relative;align-self: right;border: 2px solid red;">
+              <td colspan="2" > 
+                  <div style="position: relative;align-self: right;border: 2px solid red;margin-top:-200px">
                              Pune> delhi > pune 
             
                 </div>
                 <div style="position: relative;align-self: right;border: 2px solid red;">
-                    <table>
-                        <tr>
-							<td>
-							 Search result will be here
-							</td>
+                    
+                        <tr>						
+							<div>
+								
+							</div>							
 						</tr>
-                    </table>
-                </div>
+                    
              </td>      
-            </tr>  
-           
-            
-          </table>
-          
-       
-  
+            </tr>                         
+          </table>               
        </div>
+	   
+	   <script>	   			
+		
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function(){
+					if(this.readyState == 4 && this.status == 200){
+						cosole.log(xhttp.responseText);
+					}
+				};
+				
+				xhttp.open('GET','flights.json',true);
+				xhttp.send();
+			
+				const range = document.getElementById("myRange");
+					range.addEventListener("input", (e) => {
+						const value = +e.target.value;
+						const label = e.target.nextElementSibling;
+
+						
+						const rangeWidth = getComputedStyle(e.target).getPropertyValue("width");
+						const labelWidth = getComputedStyle(label).getPropertyValue("width");
+
+						
+						const numWidth = +rangeWidth.substring(0, rangeWidth.length - 2);
+						const numLabelWidth = +labelWidth.substring(0, labelWidth.length - 2);
+
+						
+						const max = +e.target.max;
+						const min = +e.target.min;
+
+						
+						const left = value * (numWidth / max) - numLabelWidth / 2 + scale(value, min, max, 12, -12);
+						label.style.left = `${left}px`;
+
+						label.innerHTML = value;
+					});
+
+				const scale = (num, in_min, in_max, out_min, out_max) => {
+					return ((num - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min;
+				};
+				
+				const buttons = document.querySelectorAll(".btn");
+				buttons.forEach((btn) => {
+					btn.addEventListener("click", () => {
+					buttons.forEach((btn) => btn.classList.remove("active"));
+
+					btn.classList.add("active");
+
+					
+					const tabContents = document.querySelectorAll(".tab-content");
+						tabContents.forEach((content) => {
+						content.className = content.className.replace("active", "");
+						});
+
+					document.querySelector(btn.dataset.target).classList.add("active");
+					});
+				});
+	   </script>
     </body>
 </html>
